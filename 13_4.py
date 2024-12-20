@@ -20,7 +20,7 @@ class UserState(StatesGroup):
 async def process_start(message: Message):
     await message.answer('Я бот вычесляющий норму калорий')
 
-@dp.message(Command(commands='colories'))
+@dp.message(F.text == 'colories')
 async def set_message(message: Message, state: FSMContext):
     await message.answer('Введите ваш возраст: ')
     await  state.set_state(UserState.age)
