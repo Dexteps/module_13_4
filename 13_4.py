@@ -1,4 +1,3 @@
-
 from aiogram import  Bot, F, Dispatcher
 from aiogram.filters import  Command, CommandStart,StateFilter
 from aiogram.fsm.context import FSMContext
@@ -17,7 +16,7 @@ class UserState(StatesGroup):
     growth = State()
     weight = State()
 
-@dp.message(CommandStart)
+@dp.message(Command(commands='start'))
 async def process_start(message: Message):
     await message.answer('Я бот вычесляющий норму калорий')
 
@@ -49,7 +48,4 @@ async def send_calories(message: Message, state: FSMContext):
 
 if __name__ == '__main__':
     dp.run_polling(bot)
-
-
-
 
